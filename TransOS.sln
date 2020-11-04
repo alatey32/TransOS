@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransOS.Gui", "TransOS.Gui\TransOS.Gui.csproj", "{C5D07986-A4D0-4248-B8B1-E050E280826B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C5D07986-A4D0-4248-B8B1-E050E280826B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5D07986-A4D0-4248-B8B1-E050E280826B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5D07986-A4D0-4248-B8B1-E050E280826B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5D07986-A4D0-4248-B8B1-E050E280826B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EF4AB74E-05FC-4E55-9E18-066307C4730C}
+	EndGlobalSection
+EndGlobal
