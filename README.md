@@ -1,2 +1,2 @@
 # TransOS
-VERY Simple web browser on C#
+VERY Simple web browser on C#. Jast HTML text viewer.
