@@ -1,56 +1,49 @@
-﻿using Microsoft.EntityFrameworkCore.Internal;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TransOS.Plugin.Settings;
 
-namespace TransOS.Core.Settings
+namespace TransOS.Core.Implement.Settings
 {
     /// <summary>
-    /// Base param controller
+    /// Base param controller (implemented)
     /// </summary>
-    public abstract class ABaseParam : IBaseParam
+    public abstract class BaseParam : IBaseParam
     {
         /// <summary>
-        /// TransOS context
+        /// Original base param controller
         /// </summary>
-        protected readonly Context Os;
-        protected readonly SettingsService Service;
+        readonly IBaseParam iBaseParam;
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="Os">TransOS context</param>
-        /// <param name="Service"></param>
-        internal ABaseParam(Context Os, SettingsService Service)
+        /// <param name="iBaseParam">Original base param controller</param>
+        internal BaseParam(IBaseParam iBaseParam)
         {
-            this.Os = Os;
-            this.Service = Service;
+            this.iBaseParam = iBaseParam;
         }
 
         /// <summary>
         /// Get parameter names
         /// </summary>
         /// <returns>Parameter names</returns>
-        public abstract IEnumerable<string> GetNames();
+        public IEnumerable<string> GetNames() => this.iBaseParam.GetNames();
 
         /// <summary>
         /// Delete parameter by name
         /// </summary>
         /// <param name="Name">Parameter name</param>
         /// <returns>Found and deleted</returns>
-        public abstract bool Remove(string Name);
+        public bool Remove(string Name) => this.iBaseParam.Remove(Name);
 
         /// <summary>
         /// Is parameter exists by name
         /// </summary>
         /// <param name="Name">Parameter name</param>
         /// <returns>Existed</returns>
-        public virtual bool Exists(string Name)
-        {
-            return this.GetNames().IndexOf(Name) >= 0;
-        }
+        public bool Exists(string Name) => this.iBaseParam.Exists(Name);
     }
 }

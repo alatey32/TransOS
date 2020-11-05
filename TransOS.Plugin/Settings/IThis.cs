@@ -16,10 +16,11 @@ namespace TransOS.Plugin.Settings
         /// </summary>
         IEnumerable<ISettDirectory> Directories { get; }
 
+        /*
         /// <summary>
         /// Default settings service for this plugin
         /// </summary>
-        ISettingsService Default { get; }
+        ISettingsService Default { get; }*/
 
         /// <summary>
         /// Get settings service
@@ -28,11 +29,12 @@ namespace TransOS.Plugin.Settings
         /// <returns>Settings service</returns>
         ISettingsService GetService(string PluginIdName);
 
+        /*
         /// <summary>
         /// Get settings service
         /// </summary>
         /// <returns>Settings service</returns>
-        ISettingsService GetService();
+        ISettingsService GetService();*/
 
         /// <summary>
         /// Get settings service from settings directory

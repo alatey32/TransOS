@@ -25,7 +25,7 @@ namespace TransOS.Plugin.Settings
         /// Is parameter exists by name
         /// </summary>
         /// <param name="Name">Parameter name</param>
-        /// <returns></returns>
+        /// <returns>Existed</returns>
         bool Exists(string Name);
     }
 }

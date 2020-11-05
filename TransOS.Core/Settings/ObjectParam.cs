@@ -10,7 +10,7 @@ using TransOS.Plugin.Settings;
 namespace TransOS.Core.Settings
 {
     /// <summary>
-    /// Serialized objects param controller
+    /// Serialized objects param controller (implemented)
     /// </summary>
     public class ObjectParam : ABaseParam
     {
@@ -23,6 +23,12 @@ namespace TransOS.Core.Settings
         {
         }
 
+        /// <summary>
+        /// Get object by Name
+        /// </summary>
+        /// <typeparam name="T">Object type</typeparam>
+        /// <param name="Name">Object setting name</param>
+        /// <returns></returns>
         public T Get<T>(string Name)
             where T : class
         {
@@ -39,6 +45,12 @@ namespace TransOS.Core.Settings
             return null;
         }
 
+        /// <summary>
+        /// Set object by Name
+        /// </summary>
+        /// <typeparam name="T">Object type</typeparam>
+        /// <param name="Name">Object setting name</param>
+        /// <param name="Value">Object for set</param>
         public void Set<T>(string Name, T Value)
             where T : class
         {
@@ -65,6 +77,11 @@ namespace TransOS.Core.Settings
             this.Os.MainDatabase.EntityContext.SaveChanges();
         }
 
+        /// <summary>
+        /// Set object by Name (Тame is specified by attribute SettingIdAttribute for property or field)
+        /// </summary>
+        /// <typeparam name="T">Object type</typeparam>
+        /// <param name="Value">Object for set</param>
         public void Set<T>(T Value)
             where T : class
         {
@@ -107,6 +124,10 @@ namespace TransOS.Core.Settings
             this.Set<T>(Name, Value);
         }
 
+        /// <summary>
+        /// Get parameter names
+        /// </summary>
+        /// <returns>Parameter names</returns>
         public override IEnumerable<string> GetNames()
         {
             return this.Os.MainDatabase.EntityContext.SettingsDirectoryParamObject
@@ -120,6 +141,11 @@ namespace TransOS.Core.Settings
                     x.DirectoryId == this.Service.CurrentDirectory.Id && x.Name == Name);
         }
 
+        /// <summary>
+        /// Delete parameter by name
+        /// </summary>
+        /// <param name="Name">Parameter name</param>
+        /// <returns>Found and deleted</returns>
         public override bool Remove(string Name)
         {
             var Record = this.FindRecord(Name);
@@ -132,6 +158,11 @@ namespace TransOS.Core.Settings
             return false;
         }
 
+        /// <summary>
+        /// Is parameter exists by name
+        /// </summary>
+        /// <param name="Name">Parameter name</param>
+        /// <returns>Existed</returns>
         public override bool Exists(string Name)
         {
             return this.FindRecord(Name) != null;

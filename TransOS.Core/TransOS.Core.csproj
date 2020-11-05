@@ -171,6 +171,15 @@
     <Compile Include="Context.cs" />
     <Compile Include="Fixer\This.cs" />
     <Compile Include="Helper\Attributes\BaseMethods.cs" />
+    <Compile Include="Implement\Context.cs" />
+    <Compile Include="Implement\Settings\BaseParam.cs" />
+    <Compile Include="Implement\Settings\IntParam.cs" />
+    <Compile Include="Implement\Settings\ObjectParam.cs" />
+    <Compile Include="Implement\Settings\SettingsService.cs" />
+    <Compile Include="Implement\Settings\StringItems.cs" />
+    <Compile Include="Implement\Settings\StringParam.cs" />
+    <Compile Include="Implement\Settings\StringsParam.cs" />
+    <Compile Include="Implement\Settings\This.cs" />
     <Compile Include="MainDatabase\Entity\Context.cs" />
     <Compile Include="MainDatabase\Entity\SettingsDirectory.cs" />
     <Compile Include="MainDatabase\Entity\SettingsDirectoryParamInt.cs" />

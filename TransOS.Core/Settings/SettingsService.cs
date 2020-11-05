@@ -7,6 +7,9 @@ using TransOS.Core.MainDatabase.Entity;
 
 namespace TransOS.Core.Settings
 {
+    /// <summary>
+    /// Settings service
+    /// </summary>
     public class SettingsService
     {
         /// <summary>

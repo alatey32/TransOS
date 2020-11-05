@@ -11,6 +11,11 @@ namespace TransOS.Core.Settings
     /// </summary>
     public class IntParam : ABaseParam
     {
+        /// <summary>
+        /// Set or get value by Name
+        /// </summary>
+        /// <param name="Name">Parameter name</param>
+        /// <returns></returns>
         public int this[string Name]
         {
             get
@@ -51,11 +56,15 @@ namespace TransOS.Core.Settings
         /// 
         /// </summary>
         /// <param name="Os">TransOS context</param>
-        /// <param name="Service"></param>
+        /// <param name="Service">SettingsService database record</param>
         internal IntParam(Context Os, SettingsService Service) : base(Os, Service)
         {
         }
 
+        /// <summary>
+        /// Get parameter names
+        /// </summary>
+        /// <returns>Parameter names</returns>
         public override IEnumerable<string> GetNames()
         {
             return this.Os.MainDatabase.EntityContext.SettingsDirectoryParamInt
@@ -63,12 +72,22 @@ namespace TransOS.Core.Settings
                 .Select(x => x.Name).ToArray();
         }
 
+        /// <summary>
+        /// Find setting database record by Name
+        /// </summary>
+        /// <param name="Name">'Name' field for search</param>
+        /// <returns>Setting database record</returns>
         private MainDatabase.Entity.SettingsDirectoryParamInt FindRecord(string Name)
         {
             return this.Os.MainDatabase.EntityContext.SettingsDirectoryParamInt.FirstOrDefault(x =>
                     x.DirectoryId == this.Service.CurrentDirectory.Id && x.Name == Name);
         }
 
+        /// <summary>
+        /// Delete parameter by name
+        /// </summary>
+        /// <param name="Name">Parameter name</param>
+        /// <returns>Found and deleted</returns>
         public override bool Remove(string Name)
         {
             var Record = this.FindRecord(Name);
@@ -81,6 +100,11 @@ namespace TransOS.Core.Settings
             return false;
         }
 
+        /// <summary>
+        /// Is parameter exists by name
+        /// </summary>
+        /// <param name="Name">Parameter name</param>
+        /// <returns>Existed</returns>
         public override bool Exists(string Name)
         {
             return this.FindRecord(Name) != null;
