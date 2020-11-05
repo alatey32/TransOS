@@ -34,6 +34,8 @@ namespace TransOS.Gui.WebTab
 
             this.Engine.Mainform.tabControl_WebTabs.TabPages.Add(NewTab);
             this.Engine.Mainform.tabControl_WebTabs.SelectedTab = NewTab;
+
+
         }
 
         /// <summary>
