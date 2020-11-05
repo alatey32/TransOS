@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AngleSharp;
+using AngleSharp.Dom;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,12 +28,12 @@ namespace TransOS.Gui.WebTab
         /// </summary>
         public void Add()
         {
-            var NewPageForm = new Form_WebPage(this.Engine);
-
             var NewTab = new TabPage("New tab");
+            var NewPageForm = new Form_WebPage(this.Engine, NewTab);
             NewTab.Controls.Add(NewPageForm.panel1);
 
             this.Engine.Mainform.tabControl_WebTabs.TabPages.Add(NewTab);
+            this.Engine.Mainform.tabControl_WebTabs.SelectedTab = NewTab;
         }
 
         /// <summary>
@@ -93,6 +95,13 @@ namespace TransOS.Gui.WebTab
         public async Task<string> GetContentAsync(Uri Url)
         {
             return await Task.Run(() => GetContent(Url));
+        }
+
+        public async Task<IDocument> ParseHtml(string HtmlText)
+        {
+            var config = Configuration.Default;
+            var context = BrowsingContext.New(config);
+            return await context.OpenAsync(req => req.Content(HtmlText));
         }
     }
 }

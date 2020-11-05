@@ -30,6 +30,11 @@
         {
             this.tabControl_WebTabs = new System.Windows.Forms.TabControl();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.transOSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.devToolsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.queryToCodeQueryToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,12 +53,50 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.transOSToolStripMenuItem,
             this.tabToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(740, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // transOSToolStripMenuItem
+            // 
+            this.transOSToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.devToolsToolStripMenuItem1,
+            this.toolStripMenuItem1,
+            this.exitToolStripMenuItem});
+            this.transOSToolStripMenuItem.Name = "transOSToolStripMenuItem";
+            this.transOSToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+            this.transOSToolStripMenuItem.Text = "TransOS";
+            // 
+            // devToolsToolStripMenuItem1
+            // 
+            this.devToolsToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.queryToCodeQueryToolStripMenuItem1});
+            this.devToolsToolStripMenuItem1.Name = "devToolsToolStripMenuItem1";
+            this.devToolsToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.devToolsToolStripMenuItem1.Text = "DevTools";
+            // 
+            // queryToCodeQueryToolStripMenuItem1
+            // 
+            this.queryToCodeQueryToolStripMenuItem1.Name = "queryToCodeQueryToolStripMenuItem1";
+            this.queryToCodeQueryToolStripMenuItem1.Size = new System.Drawing.Size(182, 22);
+            this.queryToCodeQueryToolStripMenuItem1.Text = "Query to code query";
+            this.queryToCodeQueryToolStripMenuItem1.Click += new System.EventHandler(this.queryToCodeQueryToolStripMenuItem1_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // tabToolStripMenuItem
             // 
@@ -67,14 +110,14 @@
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // removeToolStripMenuItem
             // 
             this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.removeToolStripMenuItem.Text = "Remove";
             this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
             // 
@@ -102,6 +145,11 @@
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
         internal System.Windows.Forms.TabControl tabControl_WebTabs;
+        private System.Windows.Forms.ToolStripMenuItem transOSToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem devToolsToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem queryToCodeQueryToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }
 

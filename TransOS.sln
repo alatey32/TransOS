@@ -5,6 +5,12 @@ VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransOS.Gui", "TransOS.Gui\TransOS.Gui.csproj", "{C5D07986-A4D0-4248-B8B1-E050E280826B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransOS.Core", "TransOS.Core\TransOS.Core.csproj", "{2BE21383-6BB9-4B1F-9AD8-3050F4C6F23B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransOS.Plugin", "TransOS.Plugin\TransOS.Plugin.csproj", "{548E3959-6C12-496F-A887-8D8A6E9B33D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransOS.Plugin.WebBrowser", "TransOS.Plugin.WebBrowser\TransOS.Plugin.WebBrowser.csproj", "{1651E5A3-9517-4FF3-9B29-C547BF4AC364}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{C5D07986-A4D0-4248-B8B1-E050E280826B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5D07986-A4D0-4248-B8B1-E050E280826B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5D07986-A4D0-4248-B8B1-E050E280826B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BE21383-6BB9-4B1F-9AD8-3050F4C6F23B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BE21383-6BB9-4B1F-9AD8-3050F4C6F23B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BE21383-6BB9-4B1F-9AD8-3050F4C6F23B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BE21383-6BB9-4B1F-9AD8-3050F4C6F23B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{548E3959-6C12-496F-A887-8D8A6E9B33D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{548E3959-6C12-496F-A887-8D8A6E9B33D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{548E3959-6C12-496F-A887-8D8A6E9B33D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{548E3959-6C12-496F-A887-8D8A6E9B33D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1651E5A3-9517-4FF3-9B29-C547BF4AC364}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1651E5A3-9517-4FF3-9B29-C547BF4AC364}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1651E5A3-9517-4FF3-9B29-C547BF4AC364}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1651E5A3-9517-4FF3-9B29-C547BF4AC364}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

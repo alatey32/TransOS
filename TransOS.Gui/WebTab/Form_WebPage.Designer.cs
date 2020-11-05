@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox_PageContent = new System.Windows.Forms.TextBox();
+            this.panel_WebContent = new System.Windows.Forms.Panel();
             this.button_Go = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_Address = new System.Windows.Forms.TextBox();
@@ -38,7 +38,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.textBox_PageContent);
+            this.panel1.Controls.Add(this.panel_WebContent);
             this.panel1.Controls.Add(this.button_Go);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.textBox_Address);
@@ -48,18 +48,15 @@
             this.panel1.Size = new System.Drawing.Size(800, 450);
             this.panel1.TabIndex = 0;
             // 
-            // textBox_PageContent
+            // panel_WebContent
             // 
-            this.textBox_PageContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.panel_WebContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_PageContent.Location = new System.Drawing.Point(3, 33);
-            this.textBox_PageContent.Multiline = true;
-            this.textBox_PageContent.Name = "textBox_PageContent";
-            this.textBox_PageContent.ReadOnly = true;
-            this.textBox_PageContent.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox_PageContent.Size = new System.Drawing.Size(794, 415);
-            this.textBox_PageContent.TabIndex = 3;
+            this.panel_WebContent.Location = new System.Drawing.Point(3, 32);
+            this.panel_WebContent.Name = "panel_WebContent";
+            this.panel_WebContent.Size = new System.Drawing.Size(794, 415);
+            this.panel_WebContent.TabIndex = 3;
             // 
             // button_Go
             // 
@@ -89,7 +86,7 @@
             this.textBox_Address.Name = "textBox_Address";
             this.textBox_Address.Size = new System.Drawing.Size(650, 20);
             this.textBox_Address.TabIndex = 0;
-            this.textBox_Address.Text = "https://www.google.com/";
+            this.textBox_Address.Text = "https://github.com/alatey32/TransOS";
             this.textBox_Address.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_Address_KeyDown);
             // 
             // Form_WebPage
@@ -112,6 +109,6 @@
         private System.Windows.Forms.Button button_Go;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox_Address;
-        private System.Windows.Forms.TextBox textBox_PageContent;
+        private System.Windows.Forms.Panel panel_WebContent;
     }
 }

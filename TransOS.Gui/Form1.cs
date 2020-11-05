@@ -20,12 +20,11 @@ namespace TransOS.Gui
 
             this.Engine = new Engine(this);
 
-            this.Text = $"TransOS v{this.Engine.AppVersion.Major}.{this.Engine.AppVersion.Minor}";
+            var version = this.Engine.Os.OsInfo.Version;
+            this.Text = $"TransOS v{version.Major}.{version.Minor}";
 
             // Add first page
             this.Engine.WebTab.Add();
-
-
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
@@ -36,6 +35,17 @@ namespace TransOS.Gui
         private void removeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Engine.WebTab.Remove();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void queryToCodeQueryToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var forma = new DevTools.Form_QueryToCodeQuery();
+            forma.ShowDialog();
         }
     }
 }

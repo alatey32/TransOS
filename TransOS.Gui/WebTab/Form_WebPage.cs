@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AngleSharp.Dom;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,16 +17,20 @@ namespace TransOS.Gui.WebTab
     {
         readonly Engine Engine;
 
-        public Form_WebPage(Engine Engine)
+        readonly TabPage tabPage;
+
+        public Form_WebPage(Engine Engine, TabPage tabPage)
         {
             InitializeComponent();
 
             this.Engine = Engine;
+            this.tabPage = tabPage;
         }
 
         private async void button_Go_Click(object sender, EventArgs e)
         {
-            string NewContent = null;
+            IDocument NewDocument = null;            
+            this.panel_WebContent.Controls.Clear();
 
             if (!string.IsNullOrWhiteSpace(this.textBox_Address.Text))
             {
@@ -44,22 +49,34 @@ namespace TransOS.Gui.WebTab
                 // Getting content
                 if (Url != null)
                 {
-                    // disable interface
-                    this.textBox_PageContent.Enabled = false;
+                    // disable interface                    
                     this.button_Go.Enabled = false;
                     this.button_Go.Text = "Loading...";
 
                     // Get content async
-                    NewContent = await this.Engine.WebTab.GetContentAsync(Url);
+                    var NewContent = await this.Engine.WebTab.GetContentAsync(Url);
 
-                    // enable interface
-                    this.textBox_PageContent.Enabled = true;
+                    // Parsing html
+                    NewDocument = await this.Engine.WebTab.ParseHtml(NewContent);
+
+                    string PageTitle = NewDocument.Title;
+                    if (!string.IsNullOrWhiteSpace(PageTitle))
+                        this.tabPage.Text = PageTitle;
+                    else
+                        this.tabPage.Text = "Tab";
+
+                    // enable interface                    
                     this.button_Go.Enabled = true;
                     this.button_Go.Text = "Go!";
                 }
             }
 
-            this.textBox_PageContent.Text = NewContent;
+            if (NewDocument != null)
+            {
+                Control NewControl = this.Engine.WebBrowser.GetView(NewDocument, this.panel_WebContent.Width);
+                if (NewControl != null)
+                    this.panel_WebContent.Controls.Add(NewControl);
+            }
         }
 
         private void textBox_Address_KeyDown(object sender, KeyEventArgs e)

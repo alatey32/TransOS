@@ -13,28 +13,24 @@ namespace TransOS.Gui
     /// </summary>
     public class Engine
     {
+        /// <summary>
+        /// TransOS context
+        /// </summary>
+        public readonly Core.Context Os;
+
         public readonly WebTab.This WebTab;
+
+        public readonly TransOS.Plugin.WebBrowser.Context WebBrowser;
 
         public readonly Form1 Mainform;
 
         internal Engine(Form1 Mainform)
         {
             this.Mainform = Mainform;
+            this.Os = new Core.Context();
 
             this.WebTab = new WebTab.This(this);
-        }
-
-        /// <summary>
-        /// Application current version
-        /// </summary>
-        public Version AppVersion
-        {
-            get => AppAsssembly.GetName().Version;
-        }
-
-        private Assembly AppAsssembly
-        {
-            get => Assembly.GetEntryAssembly();
+            this.WebBrowser = new Plugin.WebBrowser.Context();
         }
     }
 }
