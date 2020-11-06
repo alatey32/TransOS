@@ -20,7 +20,7 @@ namespace TransOS.Core.ConfigSystem
 
         public string AbsoluteConfigFileName
         {
-            get => this.Os.GetFileFullPath(this.ConfigFileName);
+            get => this.Os.OsInfo.GetFileFullPath(this.ConfigFileName);
         }
 
         public SerConfigFile Data

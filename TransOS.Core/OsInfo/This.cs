@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -20,7 +21,7 @@ namespace TransOS.Core.OsInfo
         /// <summary>
         /// Entry assembly
         /// </summary>
-        private Assembly CoreAsssembly
+        public Assembly CoreAssembly
         {
             get => Assembly.GetExecutingAssembly();
         }
@@ -30,7 +31,28 @@ namespace TransOS.Core.OsInfo
         /// </summary>
         public Version Version
         {
-            get => this.CoreAsssembly.GetName().Version;
+            get => this.CoreAssembly.GetName().Version;
+        }
+
+        public string GetFileFullPath(string FilePath)
+            => Path.Combine(this.CurrentDirectory, FilePath);
+
+        public string CoreFileUri
+        {
+            get => this.CoreAssembly.CodeBase;
+        }
+
+        public string CoreFile
+        {
+            get => new Uri(this.CoreFileUri).LocalPath;
+        }
+
+        /// <summary>
+        /// Core current directory
+        /// </summary>
+        public string CurrentDirectory
+        {
+            get => Path.GetDirectoryName(this.CoreFile);
         }
     }
 }

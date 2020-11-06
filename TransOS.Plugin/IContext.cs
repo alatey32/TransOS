@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace TransOS.Plugin
 {
     /// <summary>
-    /// Интерфейс контекста ОС для плагина
+    /// OS context interface for plugin
     /// </summary>
     public interface IContext
     {
@@ -32,8 +32,8 @@ namespace TransOS.Plugin
         Network.IThis Network { get; }
         ObjectFactory.IThis ObjectFactory { get; }*/
         Settings.IThis Settings { get; }
-        /*Ridge.IThis Ridge { get; }
-        Log.IThis Log { get; }
+        Ridge.IThis Ridge { get; }
+        /*Log.IThis Log { get; }
         MainMenu.IThis MainMenu { get; }
         Plugin.IThis Plugins { get; }
         Autorun.IThis Autorun { get; }

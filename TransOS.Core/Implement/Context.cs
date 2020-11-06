@@ -49,10 +49,8 @@ namespace TransOS.Core.Implement
         public Plugin.Network.IThis Network { get; }
         public Plugin.ObjectFactory.IThis ObjectFactory { get; }*/
         public Plugin.Settings.IThis Settings { get; }
-        
-        /*
         public Plugin.Ridge.IThis Ridge { get; }
-        public Plugin.Log.IThis Log { get; }
+        /*public Plugin.Log.IThis Log { get; }
         public Plugin.MainMenu.IThis MainMenu { get; }
         public Plugin.IThis Plugins { get; private set; }
         public Plugin.Autorun.IThis Autorun { get; }
@@ -76,8 +74,8 @@ namespace TransOS.Core.Implement
             /*this.Network = new Network.This(Os.Network);
             this.ObjectFactory = new ObjectFactory.This(Os.ObjectFactory);*/
             this.Settings = new Settings.This(this);
-            /*this.Ridge = new Ridge.This(Os.Ridge);
-            this.Log = new Log.This(Os.Log);
+            this.Ridge = new Ridge.This(Os.Ridge);
+            /*this.Log = new Log.This(Os.Log);
             this.MainMenu = new MainMenu.This(Os.MainMenu);
             this.Plugins = new Plugins.This(Os.Plugins);
             this.Autorun = new Autorun.This(Os.Autorun);
