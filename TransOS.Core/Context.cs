@@ -20,6 +20,7 @@ namespace TransOS.Core
         public readonly Settings.This Settings;
         public readonly OsInfo.This OsInfo;
         public readonly Ridge.This Ridge;
+        public readonly Gi.This Gi;
 
         /// <summary>
         /// TransOS core context constructor
@@ -41,7 +42,9 @@ namespace TransOS.Core
             // Ridge
             this.Ridge = new Ridge.This(this);
             this.Id = "fa5ac5a7-f151-419b-ac1e-c878326f54ff";
-            this.Text = "TransOS";            
+            this.Text = "TransOS";
+
+            this.Gi = new Gi.This(this);
         }
     }
 }

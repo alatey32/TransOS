@@ -54,19 +54,23 @@ namespace TransOS.Core.Implement
         public Plugin.MainMenu.IThis MainMenu { get; }
         public Plugin.IThis Plugins { get; private set; }
         public Plugin.Autorun.IThis Autorun { get; }
-        public Plugin.HotKeys.IThis HotKeys { get; }
+        public Plugin.HotKeys.IThis HotKeys { get; }*/
         public Plugin.Gi.IThis Gi { get; }
-        public Plugin.Helper.IThis Helper { get; }
+        /*public Plugin.Helper.IThis Helper { get; }
         public Plugin.Application.IThis Application { get; }
         public Plugin.ParentOs.IThis ParentOs { get; }
         public Plugin.FileSystem.IThis FileSystem { get; }
         public Plugin.Converter.IThis Converter { get; }*/
 
         /// <summary>
-        /// Орегинальный контекст TransOS
+        /// Original TransOS context
         /// </summary>
         internal readonly Core.Context Os;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Os">Original TransOS context</param>
         public Context(Core.Context Os)
         {
             this.Os = Os;
@@ -79,9 +83,9 @@ namespace TransOS.Core.Implement
             this.MainMenu = new MainMenu.This(Os.MainMenu);
             this.Plugins = new Plugins.This(Os.Plugins);
             this.Autorun = new Autorun.This(Os.Autorun);
-            this.HotKeys = new HotKeys.This(this);
+            this.HotKeys = new HotKeys.This(this);*/
             this.Gi = new Gi.This(Os.Gi);
-            this.Helper = new Helper.This(Os.Helper);
+            /*this.Helper = new Helper.This(Os.Helper);
             this.Application = new Application.This(Os.Application);
             this.ParentOs = new ParentOs.This(Os.ParentOs);
             this.FileSystem = new FileSystem.This(Os.FileSystem);

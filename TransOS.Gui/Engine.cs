@@ -18,8 +18,6 @@ namespace TransOS.Gui
         /// </summary>
         public readonly Core.Context Os;
 
-        public readonly WebTab.This WebTab;
-
         public readonly TransOS.Plugin.WebBrowser.Context WebBrowser;
 
         public readonly Form1 Mainform;
@@ -28,9 +26,10 @@ namespace TransOS.Gui
         {
             this.Mainform = Mainform;
             this.Os = new Core.Context();
+            this.Os.Gi.Gui.Windows.Tabs.MainTabControl = this.Mainform.tabControl_WebTabs;
 
-            this.WebTab = new WebTab.This(this);
-            this.WebBrowser = new Plugin.WebBrowser.Context();
+            var OsForPlugin = new TransOS.Core.Implement.Context(this.Os);
+            this.WebBrowser = new Plugin.WebBrowser.Context(OsForPlugin);
         }
     }
 }

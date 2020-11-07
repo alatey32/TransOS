@@ -24,17 +24,17 @@ namespace TransOS.Gui
             this.Text = $"TransOS v{version.Major}.{version.Minor}";
 
             // Add first page
-            this.Engine.WebTab.Add();
+            this.addToolStripMenuItem_Click(null, null);
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Engine.WebTab.Add();
+            this.Engine.WebBrowser.OpenUrl(new Uri("https://github.com/alatey32/TransOS"));
         }
 
         private void removeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Engine.WebTab.Remove();
+            this.Engine.Os.Gi.Gui.Windows.Tabs.Current?.Close();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)

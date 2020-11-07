@@ -114,13 +114,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebTab\Form_WebPage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WebTab\Form_WebPage.Designer.cs">
-      <DependentUpon>Form_WebPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WebTab\This.cs" />
     <EmbeddedResource Include="DevTools\Form_QueryToCodeQuery.resx">
       <DependentUpon>Form_QueryToCodeQuery.cs</DependentUpon>
     </EmbeddedResource>
@@ -136,9 +129,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="WebTab\Form_WebPage.resx">
-      <DependentUpon>Form_WebPage.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -161,6 +151,10 @@
     <ProjectReference Include="..\TransOS.Plugin.WebBrowser\TransOS.Plugin.WebBrowser.csproj">
       <Project>{1651e5a3-9517-4ff3-9b29-c547bf4ac364}</Project>
       <Name>TransOS.Plugin.WebBrowser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TransOS.Plugin\TransOS.Plugin.csproj">
+      <Project>{548E3959-6C12-496F-A887-8D8A6E9B33D0}</Project>
+      <Name>TransOS.Plugin</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

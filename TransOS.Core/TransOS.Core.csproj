@@ -139,6 +139,7 @@
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -157,6 +158,7 @@
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -170,8 +172,19 @@
     <Compile Include="ConfigSystem\This.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="Fixer\This.cs" />
+    <Compile Include="Gi\Gui\This.cs" />
+    <Compile Include="Gi\Gui\Windows\Tabs\Tab.cs" />
+    <Compile Include="Gi\Gui\Windows\Tabs\TabBody.cs" />
+    <Compile Include="Gi\Gui\Windows\Tabs\TabHeader.cs" />
+    <Compile Include="Gi\Gui\Windows\Tabs\This.cs" />
+    <Compile Include="Gi\Gui\Windows\This.cs" />
+    <Compile Include="Gi\This.cs" />
     <Compile Include="Helper\Attributes\BaseMethods.cs" />
     <Compile Include="Implement\Context.cs" />
+    <Compile Include="Implement\Gi\Gui\This.cs" />
+    <Compile Include="Implement\Gi\Gui\Windows\Tabs\This.cs" />
+    <Compile Include="Implement\Gi\Gui\Windows\This.cs" />
+    <Compile Include="Implement\Gi\This.cs" />
     <Compile Include="Implement\Ridge\This.cs" />
     <Compile Include="Implement\Settings\BaseParam.cs" />
     <Compile Include="Implement\Settings\IntParam.cs" />

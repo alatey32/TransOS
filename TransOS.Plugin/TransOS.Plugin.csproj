@@ -43,6 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Gi\Gui\IThis.cs" />
+    <Compile Include="Gi\Gui\Windows\IThis.cs" />
+    <Compile Include="Gi\Gui\Windows\Tabs\ITab.cs" />
+    <Compile Include="Gi\Gui\Windows\Tabs\ITabBody.cs" />
+    <Compile Include="Gi\Gui\Windows\Tabs\ITabHeader.cs" />
+    <Compile Include="Gi\Gui\Windows\Tabs\IThis.cs" />
+    <Compile Include="Gi\IThis.cs" />
     <Compile Include="Helper\CustomList.cs" />
     <Compile Include="IContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
