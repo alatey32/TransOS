@@ -41,13 +41,10 @@ namespace TransOS.Core.Implement
         {
             add => this.Os.OsStateChanged += value;
             remove => this.Os.OsStateChanged -= value;
-        }
-
-        /// <summary>
-        /// Сеть
-        /// </summary>
+        }*/
+                
         public Plugin.Network.IThis Network { get; }
-        public Plugin.ObjectFactory.IThis ObjectFactory { get; }*/
+        //public Plugin.ObjectFactory.IThis ObjectFactory { get; }
         public Plugin.Settings.IThis Settings { get; }
         public Plugin.Ridge.IThis Ridge { get; }
         /*public Plugin.Log.IThis Log { get; }
@@ -75,8 +72,8 @@ namespace TransOS.Core.Implement
         {
             this.Os = Os;
 
-            /*this.Network = new Network.This(Os.Network);
-            this.ObjectFactory = new ObjectFactory.This(Os.ObjectFactory);*/
+            this.Network = new Network.This(Os.Network);
+            /*this.ObjectFactory = new ObjectFactory.This(Os.ObjectFactory);*/
             this.Settings = new Settings.This(this);
             this.Ridge = new Ridge.This(Os.Ridge);
             /*this.Log = new Log.This(Os.Log);

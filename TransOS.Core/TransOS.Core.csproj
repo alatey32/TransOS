@@ -185,6 +185,10 @@
     <Compile Include="Implement\Gi\Gui\Windows\Tabs\This.cs" />
     <Compile Include="Implement\Gi\Gui\Windows\This.cs" />
     <Compile Include="Implement\Gi\This.cs" />
+    <Compile Include="Implement\Network\This.cs" />
+    <Compile Include="Implement\Network\Web\Client\Cash\This.cs" />
+    <Compile Include="Implement\Network\Web\Client\This.cs" />
+    <Compile Include="Implement\Network\Web\This.cs" />
     <Compile Include="Implement\Ridge\This.cs" />
     <Compile Include="Implement\Settings\BaseParam.cs" />
     <Compile Include="Implement\Settings\IntParam.cs" />
@@ -195,6 +199,7 @@
     <Compile Include="Implement\Settings\StringsParam.cs" />
     <Compile Include="Implement\Settings\This.cs" />
     <Compile Include="MainDatabase\Entity\Context.cs" />
+    <Compile Include="MainDatabase\Entity\PagesUrlCash.cs" />
     <Compile Include="MainDatabase\Entity\SettingsDirectory.cs" />
     <Compile Include="MainDatabase\Entity\SettingsDirectoryParamInt.cs" />
     <Compile Include="MainDatabase\Entity\SettingsDirectoryParamObject.cs" />
@@ -202,6 +207,10 @@
     <Compile Include="MainDatabase\Entity\SettingsDirectoryParamStrings.cs" />
     <Compile Include="MainDatabase\Entity\SettingsDirectoryParamStringsItem.cs" />
     <Compile Include="MainDatabase\This.cs" />
+    <Compile Include="Network\This.cs" />
+    <Compile Include="Network\Web\Client\Cash\This.cs" />
+    <Compile Include="Network\Web\Client\This.cs" />
+    <Compile Include="Network\Web\This.cs" />
     <Compile Include="OsInfo\This.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ridge\This.cs" />

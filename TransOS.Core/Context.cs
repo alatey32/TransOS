@@ -21,6 +21,7 @@ namespace TransOS.Core
         public readonly OsInfo.This OsInfo;
         public readonly Ridge.This Ridge;
         public readonly Gi.This Gi;
+        public readonly Network.This Network;
 
         /// <summary>
         /// TransOS core context constructor
@@ -45,6 +46,7 @@ namespace TransOS.Core
             this.Text = "TransOS";
 
             this.Gi = new Gi.This(this);
+            this.Network = new Network.This(this);
         }
     }
 }

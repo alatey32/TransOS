@@ -32,10 +32,12 @@ namespace TransOS.Plugin.WebBrowser
             }
             set
             {
-                if (value != null)
-                    this.toolStripComboBox_Url.Text = value.ToString();
+                this.toolStripComboBox_Url.Text = value?.ToString();
             }
         }
+
+        private readonly Stack<Uri> ИсторияНазад = new Stack<Uri>();
+        private readonly Stack<Uri> ИсторияВперёд = new Stack<Uri>();
 
         private readonly WebPage webPage;
         private ITab newTab;
@@ -48,6 +50,53 @@ namespace TransOS.Plugin.WebBrowser
             this.PluginContext = PluginContext;
             this.webPage = new WebPage(PluginContext);
         }
+
+        #region Navigation
+
+        public bool МожноНазад
+        {
+            get
+            {
+                return this.ИсторияНазад.Count > 0;
+            }
+        }
+
+        public bool Назад()
+        {
+            if (this.ИсторияНазад.Count > 0)
+            {
+                var ВебАдрес = this.ИсторияНазад.Pop();
+
+                if (this.Url != null && this.Url != ВебАдрес)
+                    this.ИсторияВперёд.Push(this.Url);
+
+                this.GoToAddress(ВебАдрес);
+                return true;
+            }
+            return false;
+        }
+
+        public bool МожноВперёд
+        {
+            get
+            {
+                return this.ИсторияВперёд.Count > 0;
+            }
+        }
+
+        public bool Вперёд()
+        {
+            if (this.ИсторияВперёд.Count > 0)
+            {
+                var ВебАдрес = this.ИсторияВперёд.Pop();
+
+                this.GoToAddress(ВебАдрес);
+                return true;
+            }
+            return false;
+        }
+
+        #endregion
 
         /// <summary>
         /// Update width of the control this.toolStripComboBox_Url
@@ -66,13 +115,24 @@ namespace TransOS.Plugin.WebBrowser
             this.toolStripComboBox_Url.Width = this.menuStrip1.Size.Width - TotalWidth - 10;
         }
 
-        public async void GoToAddress()
+        public async void GoToAddress(Uri TrgetUrl = null)
         {
             this.panel_ContentView.Controls.Clear();
 
-            var TrgetUrl = this.Url;
-            if(TrgetUrl != null)
+            if (TrgetUrl == null)
+                TrgetUrl = this.Url;
+            else
+                this.Url = TrgetUrl;
+
+            if (TrgetUrl != null)
             {
+                this.PluginContext.Os.Network.Web.Client.Cash.AppendLastAddress(TrgetUrl);
+
+                // история назад
+                if (this.Url != null && this.Url != TrgetUrl) // ???
+                    this.ИсторияНазад.Push(this.Url);
+                this.ИсторияВперёд.Clear();
+
                 // disable interface
                 this.refreshToolStripMenuItem.Enabled = false;
                 this.toolStripComboBox_Url.Enabled = false;
@@ -99,6 +159,9 @@ namespace TransOS.Plugin.WebBrowser
                 this.refreshToolStripMenuItem.Enabled = true;
                 this.toolStripComboBox_Url.Enabled = true;
                 this.MainMenuToolStrip.Enabled = true;
+
+                this.arrowToolStripMenuItem.Enabled = this.МожноВперёд;
+                this.backToolStripMenuItem.Enabled = this.МожноНазад;
             }
         }
 
@@ -134,6 +197,17 @@ namespace TransOS.Plugin.WebBrowser
         {
             var forma = new Form_Properties(this.webPage);
             forma.ShowDialog();
+        }
+
+        private void toolStripComboBox_Url_DropDown(object sender, EventArgs e)
+        {
+            this.toolStripComboBox_Url.Items.Clear();
+            this.toolStripComboBox_Url.Items.AddRange(this.PluginContext.Os.Network.Web.Client.Cash.GetLastAdrersses().ToArray());
+        }
+
+        private void toolStripComboBox_Url_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.GoToAddress();
         }
     }
 }

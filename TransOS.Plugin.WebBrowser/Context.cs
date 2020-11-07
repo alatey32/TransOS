@@ -13,7 +13,7 @@ namespace TransOS.Plugin.WebBrowser
 {
     public class Context
     {
-        readonly IContext Os;
+        internal readonly IContext Os;
 
         public Context(IContext Os)
         {

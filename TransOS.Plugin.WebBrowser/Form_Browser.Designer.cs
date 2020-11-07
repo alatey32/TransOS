@@ -83,6 +83,7 @@
             // backToolStripMenuItem
             // 
             this.backToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.backToolStripMenuItem.Enabled = false;
             this.backToolStripMenuItem.Image = global::TransOS.Plugin.WebBrowser.Properties.Resources.back;
             this.backToolStripMenuItem.Name = "backToolStripMenuItem";
             this.backToolStripMenuItem.Size = new System.Drawing.Size(28, 23);
@@ -91,6 +92,7 @@
             // arrowToolStripMenuItem
             // 
             this.arrowToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.arrowToolStripMenuItem.Enabled = false;
             this.arrowToolStripMenuItem.Image = global::TransOS.Plugin.WebBrowser.Properties.Resources.arrow;
             this.arrowToolStripMenuItem.Name = "arrowToolStripMenuItem";
             this.arrowToolStripMenuItem.Size = new System.Drawing.Size(28, 23);
@@ -110,6 +112,8 @@
             this.toolStripComboBox_Url.AutoSize = false;
             this.toolStripComboBox_Url.Name = "toolStripComboBox_Url";
             this.toolStripComboBox_Url.Size = new System.Drawing.Size(121, 23);
+            this.toolStripComboBox_Url.DropDown += new System.EventHandler(this.toolStripComboBox_Url_DropDown);
+            this.toolStripComboBox_Url.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox_Url_SelectedIndexChanged);
             this.toolStripComboBox_Url.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripComboBox_Url_KeyDown);
             // 
             // MainMenuToolStrip
@@ -125,7 +129,7 @@
             // pagePropertiesToolStripMenuItem
             // 
             this.pagePropertiesToolStripMenuItem.Name = "pagePropertiesToolStripMenuItem";
-            this.pagePropertiesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pagePropertiesToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.pagePropertiesToolStripMenuItem.Text = "Page properties";
             this.pagePropertiesToolStripMenuItem.Click += new System.EventHandler(this.pagePropertiesToolStripMenuItem_Click);
             // 

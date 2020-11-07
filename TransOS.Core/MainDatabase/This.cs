@@ -163,10 +163,10 @@ namespace TransOS.Core.MainDatabase
             if (!AllTables.Contains("SettingsDirectoryParamStringsItem"))
                 this.ExecuteNonQuery("CREATE TABLE 'SettingsDirectoryParamStringsItem' ( 'Id' INTEGER NOT NULL UNIQUE, 'ParamId' INTEGER NOT NULL, 'Value' TEXT NOT NULL, FOREIGN KEY('ParamId') REFERENCES 'SettingsDirectoryParamStrings'('Id') ON DELETE CASCADE, PRIMARY KEY('Id' AUTOINCREMENT));");
 
-            /*if (!AllTables.Contains(""))
-                this.ExecuteNonQuery("");
+            if (!AllTables.Contains("PagesUrlCash"))
+                this.ExecuteNonQuery("CREATE TABLE 'PagesUrlCash' ( 'Id' INTEGER NOT NULL UNIQUE, 'Url' TEXT NOT NULL UNIQUE, 'UsesCount' INTEGER NOT NULL DEFAULT 0, PRIMARY KEY('Id' AUTOINCREMENT))");
 
-            if (!AllTables.Contains(""))
+            /*if (!AllTables.Contains(""))
                 this.ExecuteNonQuery("");*/
 
 

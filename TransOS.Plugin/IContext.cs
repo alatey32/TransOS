@@ -24,13 +24,13 @@ namespace TransOS.Plugin
         /// <summary>
         /// Изменено основное состояние операционной системы
         /// </summary>
-        event Action<OsState> OsStateChanged;
+        event Action<OsState> OsStateChanged;*/
 
         /// <summary>
         /// Сеть
         /// </summary>
         Network.IThis Network { get; }
-        ObjectFactory.IThis ObjectFactory { get; }*/
+        //ObjectFactory.IThis ObjectFactory { get; }
         Settings.IThis Settings { get; }
         Ridge.IThis Ridge { get; }
         /*Log.IThis Log { get; }
