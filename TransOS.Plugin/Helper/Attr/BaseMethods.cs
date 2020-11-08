@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TransOS.Core.Helper.Attributes
+namespace TransOS.Plugin.Helper.Attr
 {
     /// <summary>
     /// Base methods for work with .NET attributes

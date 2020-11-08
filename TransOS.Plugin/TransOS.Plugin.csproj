@@ -50,7 +50,60 @@
     <Compile Include="Gi\Gui\Windows\Tabs\ITabHeader.cs" />
     <Compile Include="Gi\Gui\Windows\Tabs\IThis.cs" />
     <Compile Include="Gi\IThis.cs" />
+    <Compile Include="Helper\Attr\BaseMethods.cs" />
+    <Compile Include="Helper\CollectionHelper.cs" />
     <Compile Include="Helper\CustomList.cs" />
+    <Compile Include="Helper\FileSystem\FILEOP_FLAGS.cs" />
+    <Compile Include="Helper\FileSystem\Папка.cs" />
+    <Compile Include="Helper\FileSystem\Файл.cs" />
+    <Compile Include="Helper\InformationTable\Attr\КолонкаAttribute.cs" />
+    <Compile Include="Helper\InformationTable\Attr\СтатусAttribute.cs" />
+    <Compile Include="Helper\InformationTable\Attr\ФункцияAttribute.cs" />
+    <Compile Include="Helper\InformationTable\Interface\СплошнаяЦветность.cs" />
+    <Compile Include="Helper\InformationTable\Interface\ЯКопирабельный.cs" />
+    <Compile Include="Helper\InformationTable\View\Comparer\Сравниватель_Byte.cs" />
+    <Compile Include="Helper\InformationTable\View\Comparer\Сравниватель_Decimal.cs" />
+    <Compile Include="Helper\InformationTable\View\Comparer\Сравниватель_Int16.cs" />
+    <Compile Include="Helper\InformationTable\View\Comparer\Сравниватель_Int32.cs" />
+    <Compile Include="Helper\InformationTable\View\Comparer\Сравниватель_Int64.cs" />
+    <Compile Include="Helper\InformationTable\View\Comparer\Сравниватель_SByte.cs" />
+    <Compile Include="Helper\InformationTable\View\Comparer\Сравниватель_UInt16.cs" />
+    <Compile Include="Helper\InformationTable\View\Comparer\Сравниватель_UInt32.cs" />
+    <Compile Include="Helper\InformationTable\View\Comparer\Сравниватель_UInt64.cs" />
+    <Compile Include="Helper\InformationTable\View\Form_ЗадатьЗначениеСвойства.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Helper\InformationTable\View\Form_ЗадатьЗначениеСвойства.Designer.cs">
+      <DependentUpon>Form_ЗадатьЗначениеСвойства.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\InformationTable\View\ВидОтображениеФормы.cs" />
+    <Compile Include="Helper\InformationTable\View\СортировщикКолонок.cs" />
+    <Compile Include="Helper\InformationTable\View\ФормаТаблицы.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Helper\InformationTable\View\ФормаТаблицы.Designer.cs">
+      <DependentUpon>ФормаТаблицы.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\InformationTable\БазовыйЭлемент.cs" />
+    <Compile Include="Helper\InformationTable\Помощник.cs" />
+    <Compile Include="Helper\InformationTable\Таблица.cs" />
+    <Compile Include="Helper\InformationTable\ЦветностьЭлемента.cs" />
+    <Compile Include="Helper\TypeConverters\TcBoolean\БазовыйКонвертр.cs" />
+    <Compile Include="Helper\TypeConverters\TcBoolean\ДаНет.cs" />
+    <Compile Include="Helper\TypeConverters\TcBoolean\ЕстьНет.cs" />
+    <Compile Include="Helper\TypeConverters\TcNumeric\Decimal_ВСтрокуСОтступами.cs" />
+    <Compile Include="Helper\TypeConverters\TcNumeric\Int32_ВСтрокуСОтступами.cs" />
+    <Compile Include="Helper\TypeConverters\TcNumeric\МасштабКоличестваБайтов.cs" />
+    <Compile Include="Helper\TypeConverters\TcNumeric\НомерИХекс.cs" />
+    <Compile Include="Helper\TypeConverters\TcString\КонвертрНеПустойСтроки.cs" />
+    <Compile Include="Helper\TypeConverters\TcString\КонвертрТримированнойСтроки.cs" />
+    <Compile Include="Helper\TypeConverters\Конвертр_Guid.cs" />
+    <Compile Include="Helper\TypeConverters\Конвертр_Version.cs" />
+    <Compile Include="Helper\TypeConverters\КонвертрМассиваБайтов.cs" />
+    <Compile Include="Helper\TypeConverters\КонвертрМассиваСтрок.cs" />
+    <Compile Include="Helper\TypeConverters\КонвертрПеречисления.cs" />
+    <Compile Include="Helper\МассивБайтов.cs" />
+    <Compile Include="Helper\Математика.cs" />
     <Compile Include="IContext.cs" />
     <Compile Include="Network\IThis.cs" />
     <Compile Include="Network\Web\Client\Cash\IThis.cs" />
@@ -72,5 +125,11 @@
     <Compile Include="Settings\IThis.cs" />
     <Compile Include="Settings\SettingIdAttribute.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Helper\InformationTable\View\ФормаТаблицы.resx">
+      <DependentUpon>ФормаТаблицы.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

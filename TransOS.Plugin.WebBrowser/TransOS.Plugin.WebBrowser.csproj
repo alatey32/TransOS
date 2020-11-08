@@ -111,6 +111,8 @@
   <ItemGroup>
     <None Include="Resources\Menu.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Bookmarks\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

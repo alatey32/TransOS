@@ -9,7 +9,7 @@ namespace TransOS.Plugin.Helper
 {
     public class CustomList<ElementType> : IList<ElementType>
     {
-        protected readonly List<ElementType> Элементы = new List<ElementType>();
+        protected readonly List<ElementType> Elements = new List<ElementType>();
 
         private readonly Func<IEnumerable<ElementType>> GetElementMethod = null;
 
@@ -19,7 +19,7 @@ namespace TransOS.Plugin.Helper
         }
 
         /// <summary>
-        /// 
+        /// Not work!!!
         /// </summary>
         /// <param name="GetElements">Method that dynamically gets all elements</param>
         public CustomList(Func<IEnumerable<ElementType>> GetElementMethod)
@@ -32,8 +32,8 @@ namespace TransOS.Plugin.Helper
         {
             if (this.GetElementMethod != null)
             {
-                this.Элементы.Clear();
-                this.Элементы.AddRange(this.GetElementMethod());
+                this.Elements.Clear();
+                this.Elements.AddRange(this.GetElementMethod());
             }
         }
 
@@ -42,46 +42,46 @@ namespace TransOS.Plugin.Helper
         IEnumerator IEnumerable.GetEnumerator()
         {
             this.ReloadElements();
-            return this.Элементы.GetEnumerator();
+            return this.Elements.GetEnumerator();
         }
 
         public IEnumerator<ElementType> GetEnumerator()
         {
             this.ReloadElements();
-            return this.Элементы.GetEnumerator();
+            return this.Elements.GetEnumerator();
         }
 
         #endregion
 
         #region ICollection<ElementType>
 
-        public int Count { get { return this.Элементы.Count; } }
+        public int Count { get { return this.Elements.Count; } }
         public bool IsReadOnly { get; protected set; }
 
         public virtual void Add(ElementType item)
         {
-            this.Элементы.Add(item);
+            this.Elements.Add(item);
         }
 
         public virtual void Clear()
         {
-            this.Элементы.Clear();
+            this.Elements.Clear();
         }
 
         public bool Contains(ElementType item)
         {
-            return this.Элементы.Contains(item);
+            return this.Elements.Contains(item);
         }
 
         public void CopyTo(ElementType[] array, int arrayIndex)
         {
             this.ReloadElements();
-            this.Элементы.CopyTo(array, arrayIndex);
+            this.Elements.CopyTo(array, arrayIndex);
         }
 
         public virtual bool Remove(ElementType item)
         {
-            return this.Элементы.Remove(item);
+            return this.Elements.Remove(item);
         }
 
         #endregion
@@ -93,25 +93,25 @@ namespace TransOS.Plugin.Helper
             get
             {
                 this.ReloadElements();
-                return this.Элементы[index];
+                return this.Elements[index];
             }
-            set { this.Элементы[index] = value; }
+            set { this.Elements[index] = value; }
         }
 
         public int IndexOf(ElementType item)
         {
             this.ReloadElements();
-            return this.Элементы.IndexOf(item);
+            return this.Elements.IndexOf(item);
         }
 
         public virtual void Insert(int index, ElementType item)
         {
-            this.Элементы.Insert(index, item);
+            this.Elements.Insert(index, item);
         }
 
         public virtual void RemoveAt(int index)
         {
-            this.Remove(this.Элементы[index]);
+            this.Remove(this.Elements[index]);
         }
 
         #endregion

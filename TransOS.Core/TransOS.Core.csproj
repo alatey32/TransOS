@@ -179,7 +179,6 @@
     <Compile Include="Gi\Gui\Windows\Tabs\This.cs" />
     <Compile Include="Gi\Gui\Windows\This.cs" />
     <Compile Include="Gi\This.cs" />
-    <Compile Include="Helper\Attributes\BaseMethods.cs" />
     <Compile Include="Implement\Context.cs" />
     <Compile Include="Implement\Gi\Gui\This.cs" />
     <Compile Include="Implement\Gi\Gui\Windows\Tabs\This.cs" />
@@ -229,7 +228,9 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Helper\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TransOS.Plugin\TransOS.Plugin.csproj">
       <Project>{548e3959-6c12-496f-a887-8d8a6e9b33d0}</Project>
