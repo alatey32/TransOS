@@ -200,6 +200,7 @@
     <Compile Include="Implement\Settings\This.cs" />
     <Compile Include="MainDatabase\Entity\Context.cs" />
     <Compile Include="MainDatabase\Entity\PagesUrlCash.cs" />
+    <Compile Include="MainDatabase\Entity\SavedTabs.cs" />
     <Compile Include="MainDatabase\Entity\SettingsDirectory.cs" />
     <Compile Include="MainDatabase\Entity\SettingsDirectoryParamInt.cs" />
     <Compile Include="MainDatabase\Entity\SettingsDirectoryParamObject.cs" />

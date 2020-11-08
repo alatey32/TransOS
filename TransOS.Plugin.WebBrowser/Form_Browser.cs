@@ -126,6 +126,7 @@ namespace TransOS.Plugin.WebBrowser
 
             if (TrgetUrl != null)
             {
+                this.newTab.RestoreCommand = TrgetUrl.ToString();
                 this.PluginContext.Os.Network.Web.Client.Cash.AppendLastAddress(TrgetUrl);
 
                 // история назад

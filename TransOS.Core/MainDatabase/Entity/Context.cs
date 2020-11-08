@@ -36,6 +36,7 @@ namespace TransOS.Core.MainDatabase.Entity
         /*public DbSet<Plugin> Plugin { get; set; }
         public DbSet<Autorun> Autorun { get; set; }*/
         public DbSet<PagesUrlCash> PagesUrlCash { get; set; }
+        public DbSet<SavedTabs> SavedTabs { get; set; }
         internal Context(DbContextOptions options): base(options)
         {
 

@@ -22,9 +22,12 @@ namespace TransOS.Plugin.WebBrowser
             System.Net.ServicePointManager.ServerCertificateValidationCallback = this.RemoteCertificateValidationCallback;
         }
 
-        public void OpenUrl(Uri Url)
+        public void OpenUrl(Uri Url, string Text = null)
         {
-            var NewTab = this.Os.Gi.Gui.Windows.Tabs.Add("New tab");
+            if (string.IsNullOrWhiteSpace(Text))
+                Text = "New tab";
+
+            var NewTab = this.Os.Gi.Gui.Windows.Tabs.Add(Text);
 
             var Forma = new Form_Browser(NewTab, this)
             {

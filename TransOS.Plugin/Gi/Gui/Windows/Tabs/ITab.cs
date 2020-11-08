@@ -36,7 +36,7 @@ namespace TransOS.Plugin.Gi.Gui.Windows.Tabs
         /// <summary>
         /// Event before closing a tab
         /// </summary>
-        event Action<ITab> Closed;
+        event Action<ITab> Closing;
 
         // int ZIndex { get; }
 
@@ -44,5 +44,10 @@ namespace TransOS.Plugin.Gi.Gui.Windows.Tabs
         /// Close tab
         /// </summary>
         void Close();
+
+        /// <summary>
+        /// Command to save and restore tab with equals content
+        /// </summary>
+        string RestoreCommand { get; set; }
     }
 }

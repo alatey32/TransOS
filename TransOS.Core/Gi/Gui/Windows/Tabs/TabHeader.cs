@@ -27,7 +27,14 @@ namespace TransOS.Core.Gi.Gui.Windows.Tabs
         public string Text
         {
             get => this.tab.tabPage.Text;
-            set => this.tab.tabPage.Text = value;
+            set
+            {
+                this.tab.tabPage.Text = value;
+
+                int TabPageIndex = this.Os.Gi.Gui.Windows.Tabs.MainTabControl.TabPages.IndexOf(this.tab.tabPage);
+                if (TabPageIndex >= 0)
+                    Os.Network.Web.Client.Cash.SaveTab(this.tab, TabPageIndex);
+            }
         }
 
         private readonly Context Os;

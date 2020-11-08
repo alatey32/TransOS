@@ -23,8 +23,20 @@ namespace TransOS.Gui
             var version = this.Engine.Os.OsInfo.Version;
             this.Text = $"TransOS v{version.Major}.{version.Minor}";
 
-            // Add first page
-            this.addToolStripMenuItem_Click(null, null);
+
+            // Restore saved tabs
+            foreach(var Record in this.Engine.Os.Network.Web.Client.Cash.GetTabsRestoreContents())
+            {
+                this.Engine.WebBrowser.OpenUrl(new Uri(Record.RestoreCommand), Record.Text);
+            }
+
+            if (this.Engine.Os.Gi.Gui.Windows.Tabs.All.Count() == 0)
+            {
+                // Add first page
+                this.addToolStripMenuItem_Click(null, null);
+            }
+
+            // Load active tab ???
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)

@@ -166,8 +166,8 @@ namespace TransOS.Core.MainDatabase
             if (!AllTables.Contains("PagesUrlCash"))
                 this.ExecuteNonQuery("CREATE TABLE 'PagesUrlCash' ( 'Id' INTEGER NOT NULL UNIQUE, 'Url' TEXT NOT NULL UNIQUE, 'UsesCount' INTEGER NOT NULL DEFAULT 0, PRIMARY KEY('Id' AUTOINCREMENT))");
 
-            /*if (!AllTables.Contains(""))
-                this.ExecuteNonQuery("");*/
+            if (!AllTables.Contains("SavedTabs"))
+                this.ExecuteNonQuery("CREATE TABLE 'SavedTabs' ( 'Id' INTEGER NOT NULL UNIQUE, 'TabIndex' INTEGER NOT NULL UNIQUE, 'RestoreCommand' TEXT NOT NULL, 'Text' TEXT, PRIMARY KEY('Id' AUTOINCREMENT))");
 
 
 

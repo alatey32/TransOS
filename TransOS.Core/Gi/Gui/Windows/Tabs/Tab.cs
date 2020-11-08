@@ -7,7 +7,10 @@ using System.Windows.Forms;
 using TransOS.Plugin.Gi.Gui.Windows.Tabs;
 
 namespace TransOS.Core.Gi.Gui.Windows.Tabs
-{    
+{
+    /// <summary>
+    /// Tab in the GUI window
+    /// </summary>
     public class Tab : ITab
     {
         public Guid guid { get; private set; }
@@ -35,6 +38,26 @@ namespace TransOS.Core.Gi.Gui.Windows.Tabs
         }
 
         /// <summary>
+        /// Command to save and restore tab with equals content
+        /// </summary>
+        private string RestoreCommand_ { get; set; }
+
+        /// <summary>
+        /// Command to save and restore tab with equals content
+        /// </summary>
+        public string RestoreCommand
+        {
+            get => this.RestoreCommand_;
+            set
+            {
+                this.RestoreCommand_ = value;
+                int TabPageIndex = this.Os.Gi.Gui.Windows.Tabs.MainTabControl.TabPages.IndexOf(this.tabPage);
+                if (TabPageIndex >= 0)
+                    Os.Network.Web.Client.Cash.SaveTab(this, TabPageIndex);
+            }
+        }
+
+        /// <summary>
         /// Select this tab
         /// </summary>
         public void Select()
@@ -43,9 +66,9 @@ namespace TransOS.Core.Gi.Gui.Windows.Tabs
         }
 
         /// <summary>
-        /// Событие перед закрытием вкладки
+        /// Event before closing a tab
         /// </summary>
-        public event Action<ITab> Closed;
+        public event Action<ITab> Closing;
 
         private readonly Context Os;
 
@@ -70,8 +93,12 @@ namespace TransOS.Core.Gi.Gui.Windows.Tabs
         /// Close this tab
         /// </summary>
         public void Close()
-        {
-            this.Closed?.Invoke(this);
+        {            
+            int TabPageIndex = this.Os.Gi.Gui.Windows.Tabs.MainTabControl.TabPages.IndexOf(this.tabPage);
+            if (TabPageIndex >= 0)
+                Os.Network.Web.Client.Cash.RemoveTab(TabPageIndex);
+
+            this.Closing?.Invoke(this);
             this.Os.Gi.Gui.Windows.Tabs.MainTabControl.TabPages.Remove(this.tabPage);
         }
     }

@@ -117,15 +117,15 @@ namespace TransOS.Plugin.WebBrowser.WebPageSystem
         public Control GetView(int ControlWidth)
         {
             if(this.CurrentDocument != null)
-                return this.ПолучитьКонтрол(CurrentDocument.QuerySelector("body"), ControlWidth - 20, null);
+                return this.GetControl(CurrentDocument.QuerySelector("body"), ControlWidth - 20, null);
             return null;
         }
 
-        private Control ПолучитьКонтрол(INode Нод, int МаксимальнаяШирина, Uri АдресСтраницы)
+        private Control GetControl(INode Нод, int МаксимальнаяШирина, Uri АдресСтраницы)
         {
             Control новыйКонтрол = null;
             List<Control> Контролы;
-            string СсылкаУрл, Текст;
+            string Текст, СсылкаУрл;
 
             switch (Нод.NodeType)
             {
@@ -149,7 +149,7 @@ namespace TransOS.Plugin.WebBrowser.WebPageSystem
                     switch (ТегЭлемент.NodeName)
                     {
                         // крнтейнеры
-                        /*case "DIV":
+                        case "DIV":
                         case "BODY":
                         case "CENTER":
                         case "SPAN":
@@ -157,12 +157,11 @@ namespace TransOS.Plugin.WebBrowser.WebPageSystem
                         case "STRONG":
                         case "UL":
                         case "LI":
-                        case "LABEL":*/
-                        default:
+                        case "LABEL":
                             Контролы = new List<Control>();
                             foreach (var Поднод in Нод.ChildNodes)
                             {
-                                var Полученный = this.ПолучитьКонтрол(Поднод, МаксимальнаяШирина - 2, АдресСтраницы);
+                                var Полученный = this.GetControl(Поднод, МаксимальнаяШирина - 2, АдресСтраницы);
                                 if (Полученный != null)
                                     Контролы.Add(Полученный);
                             }
@@ -371,7 +370,7 @@ namespace TransOS.Plugin.WebBrowser.WebPageSystem
                                                                 this.ГлавнаяФорма.toolTip1.SetToolTip(КартинкаКонтрол, Текст);
                                                             новыйКонтрол = КартинкаКонтрол;
                                                         }
-                                                        break;
+                                                        break;*/
 
                                                     case "H1":
                                                     case "H2":
@@ -396,6 +395,7 @@ namespace TransOS.Plugin.WebBrowser.WebPageSystem
                                                         }
                                                         break;
 
+                            
                                                     case "SCRIPT":
                                                     case "LINK":
                                                     case "STYLE":
@@ -404,7 +404,7 @@ namespace TransOS.Plugin.WebBrowser.WebPageSystem
                                                         // Отключены
                                                         break;
 
-                                                    case "FORM":
+                                                    /*case "FORM":
                                                         Контролы = new List<Control>();
                                                         foreach (var Поднод in Нод.ChildNodes)
                                                         {
@@ -441,7 +441,7 @@ namespace TransOS.Plugin.WebBrowser.WebPageSystem
                                                                 новыйКонтрол.Height = ПоследнийКонтрол.Location.Y + ПоследнийКонтрол.Height;
                                                             }
                                                         }
-                                                        break;
+                                                        break;*/
 
                                                     case "INPUT":
 
@@ -458,7 +458,7 @@ namespace TransOS.Plugin.WebBrowser.WebPageSystem
                                                                 };
                                                                 break;
 
-                                                            case "image":
+                                                            /*case "image":
                                                                 СсылкаУрл = ТегЭлемент.Attributes["src"]?.Value;
                                                                 if (СсылкаУрл != null)
                                                                 {
@@ -507,7 +507,7 @@ namespace TransOS.Plugin.WebBrowser.WebPageSystem
                                                     this.ГлавнаяФорма.toolTip1.SetToolTip(КартинкаКонтрол, Текст);
                                                 новыйКонтрол = КартинкаКонтрол;
                                             }
-                                            break;
+                                            break;*/
                                     }
 
                                     break;
@@ -521,7 +521,7 @@ namespace TransOS.Plugin.WebBrowser.WebPageSystem
                                         Width = МаксимальнаяШирина,
                                         BorderStyle = BorderStyle.FixedSingle
                                     };
-                                    break;*/
+                                    break;
                     }
                     break;
             }
