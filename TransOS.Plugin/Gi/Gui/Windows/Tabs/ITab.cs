@@ -11,7 +11,7 @@ namespace TransOS.Plugin.Gi.Gui.Windows.Tabs
     /// </summary>
     public interface ITab
     {
-        Guid guid { get; }
+        string Id { get; set; }
 
         /// <summary>
         /// Is the menu item activated

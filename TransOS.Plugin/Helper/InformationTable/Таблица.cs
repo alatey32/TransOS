@@ -32,7 +32,7 @@ namespace TransOS.Plugin.Helper.InformationTable
     /// </summary>
     /// <typeparam name="ТипЗаписи">Тип записей таблицы</typeparam>
     public abstract class Таблица<ТипЗаписи> : Таблица
-        where ТипЗаписи : БазовыйЭлемент<ТипЗаписи>
+        where ТипЗаписи : BaseElement<ТипЗаписи>
 
     {
         #region Записи

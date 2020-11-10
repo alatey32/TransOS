@@ -9,6 +9,7 @@ namespace TransOS.Plugin.Settings
     public interface ISettDirectory
     {
         string Name { get; }
-        IEnumerable<ISettDirectory> Directories { get; }
+
+        string FullName { get; }
     }
 }

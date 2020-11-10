@@ -59,7 +59,7 @@ namespace TransOS.Core.Implement.Settings
         /// <returns></returns>
         public ISettingsService GetService(string PluginIdName)
         {
-            return new SettingsService(this.Os.Os.Settings.GetService(PluginIdName));
+            return new SettingsService(this.Os.Os.Settings.GetDbService(PluginIdName));
         }
 
         /*
@@ -71,15 +71,5 @@ namespace TransOS.Core.Implement.Settings
         {
             return this.GetService(this.Os.ThisPlugin.Id);
         }*/
-
-        /// <summary>
-        /// Get settings service from setings directory
-        /// </summary>
-        /// <param name="settDirectory"></param>
-        /// <returns></returns>
-        public ISettingsService GetService(ISettDirectory settDirectory)
-        {
-            return new SettingsService(this.Os.Os.Settings.GetService((Core.Settings.SettDirectory)settDirectory));
-        }
     }
 }

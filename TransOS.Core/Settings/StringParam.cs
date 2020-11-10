@@ -13,8 +13,8 @@ namespace TransOS.Core.Settings
         {
             get
             {
-                var Record = this.Os.MainDatabase.EntityContext.SettingsDirectoryParamString.FirstOrDefault(x =>
-                x.DirectoryId == this.Service.CurrentDirectory.Id && x.Name == Name);
+                var Record = this.Directory.Os.MainDatabase.EntityContext.SettingsDirectoryParamString.FirstOrDefault(x =>
+                x.DirectoryId == this.Directory.DirectoryRecord.Id && x.Name == Name);
                 if (Record != null)
                 {
                     return Record.Value;
@@ -23,8 +23,8 @@ namespace TransOS.Core.Settings
             }
             set
             {
-                var Record = this.Os.MainDatabase.EntityContext.SettingsDirectoryParamString.FirstOrDefault(x =>
-                x.DirectoryId == this.Service.CurrentDirectory.Id && x.Name == Name);
+                var Record = this.Directory.Os.MainDatabase.EntityContext.SettingsDirectoryParamString.FirstOrDefault(x =>
+                x.DirectoryId == this.Directory.DirectoryRecord.Id && x.Name == Name);
                 if (Record != null)
                 {
                     // get existed
@@ -35,36 +35,31 @@ namespace TransOS.Core.Settings
                     // creating new
                     Record = new SettingsDirectoryParamString
                     {
-                        DirectoryId = this.Service.CurrentDirectory.Id,
+                        DirectoryId = this.Directory.DirectoryRecord.Id,
                         Name = Name,
                         Value = value
                     };
-                    this.Os.MainDatabase.EntityContext.SettingsDirectoryParamString.Add(Record);
+                    this.Directory.Os.MainDatabase.EntityContext.SettingsDirectoryParamString.Add(Record);
                 }
-                this.Os.MainDatabase.EntityContext.SaveChanges();
+                this.Directory.Os.MainDatabase.EntityContext.SaveChanges();
             }
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="Os">TransOS context</param>
-        /// <param name="Service"></param>
-        internal StringParam(Context Os, SettingsService Service) : base(Os, Service)
+        
+        internal StringParam(SettDirectory Directory) : base(Directory)
         {
         }
 
         public override IEnumerable<string> GetNames()
         {
-            return this.Os.MainDatabase.EntityContext.SettingsDirectoryParamString
-                .Where(x => x.DirectoryId == this.Service.CurrentDirectory.Id)
+            return this.Directory.Os.MainDatabase.EntityContext.SettingsDirectoryParamString
+                .Where(x => x.DirectoryId == this.Directory.DirectoryRecord.Id)
                 .Select(x => x.Name).ToArray();
         }
 
         private SettingsDirectoryParamString FindRecord(string Name)
         {
-            return this.Os.MainDatabase.EntityContext.SettingsDirectoryParamString.FirstOrDefault(x =>
-                    x.DirectoryId == this.Service.CurrentDirectory.Id && x.Name == Name);
+            return this.Directory.Os.MainDatabase.EntityContext.SettingsDirectoryParamString.FirstOrDefault(x =>
+                    x.DirectoryId == this.Directory.DirectoryRecord.Id && x.Name == Name);
         }
 
         public override bool Remove(string Name)
@@ -72,8 +67,8 @@ namespace TransOS.Core.Settings
             var Record = this.FindRecord(Name);
             if (Record != null)
             {
-                this.Os.MainDatabase.EntityContext.SettingsDirectoryParamString.Remove(Record);
-                this.Os.MainDatabase.EntityContext.SaveChanges();
+                this.Directory.Os.MainDatabase.EntityContext.SettingsDirectoryParamString.Remove(Record);
+                this.Directory.Os.MainDatabase.EntityContext.SaveChanges();
                 return true;
             }
             return false;

@@ -158,7 +158,7 @@ namespace TransOS.Plugin.Helper.InformationTable
         }
 
         public static PropertyInfo[] ПолучитьОтображаемыеСвойства<ТипЭлемента>()
-            where ТипЭлемента : БазовыйЭлемент<ТипЭлемента>
+            where ТипЭлемента : BaseElement<ТипЭлемента>
         {
             return ПолучитьОтображаемыеСвойства(typeof(ТипЭлемента));
         }

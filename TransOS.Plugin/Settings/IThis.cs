@@ -28,19 +28,5 @@ namespace TransOS.Plugin.Settings
         /// <param name="PluginIdName">Settings section name</param>
         /// <returns>Settings service</returns>
         ISettingsService GetService(string PluginIdName);
-
-        /*
-        /// <summary>
-        /// Get settings service
-        /// </summary>
-        /// <returns>Settings service</returns>
-        ISettingsService GetService();*/
-
-        /// <summary>
-        /// Get settings service from settings directory
-        /// </summary>
-        /// <param name="settDirectory">Settings directory</param>
-        /// <returns>Settings service</returns>
-        ISettingsService GetService(ISettDirectory settDirectory);
     }
 }

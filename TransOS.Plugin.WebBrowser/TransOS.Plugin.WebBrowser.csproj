@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppReg.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="Form_Browser.cs">
       <SubType>Form</SubType>
@@ -111,8 +112,6 @@
   <ItemGroup>
     <None Include="Resources\Menu.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Bookmarks\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

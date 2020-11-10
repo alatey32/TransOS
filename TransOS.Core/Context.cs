@@ -22,6 +22,9 @@ namespace TransOS.Core
         public readonly Ridge.This Ridge;
         public readonly Gi.This Gi;
         public readonly Network.This Network;
+        public readonly Bookmarks.This Bookmarks;
+        public readonly Helper.This Helper;
+        public readonly Application.This Application;
 
         /// <summary>
         /// TransOS core context constructor
@@ -47,6 +50,9 @@ namespace TransOS.Core
 
             this.Gi = new Gi.This(this);
             this.Network = new Network.This(this);
+            this.Bookmarks = new Bookmarks.This(this);
+            this.Helper = new Helper.This();
+            this.Application = new Application.This();
         }
     }
 }

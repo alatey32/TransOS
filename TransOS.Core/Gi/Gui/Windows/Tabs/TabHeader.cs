@@ -30,10 +30,7 @@ namespace TransOS.Core.Gi.Gui.Windows.Tabs
             set
             {
                 this.tab.tabPage.Text = value;
-
-                int TabPageIndex = this.Os.Gi.Gui.Windows.Tabs.MainTabControl.TabPages.IndexOf(this.tab.tabPage);
-                if (TabPageIndex >= 0)
-                    Os.Network.Web.Client.Cash.SaveTab(this.tab, TabPageIndex);
+                Os.Network.Web.Client.Cash.SaveTab(this.tab, this.tab.Id);
             }
         }
 

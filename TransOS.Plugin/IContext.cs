@@ -39,9 +39,9 @@ namespace TransOS.Plugin
         Autorun.IThis Autorun { get; }
         HotKeys.IThis HotKeys { get; }*/
         Gi.IThis Gi { get; }
-        /*Helper.IThis Helper { get; }
+        Helper.IThis Helper { get; }
         Application.IThis Application { get; }
-        ParentOs.IThis ParentOs { get; }
+        /*ParentOs.IThis ParentOs { get; }
         FileSystem.IThis FileSystem { get; }
         Converter.IThis Converter { get; }
 

@@ -9,7 +9,7 @@ namespace TransOS.Core.MainDatabase.Entity
     public class SavedTabs
     {
         public int Id { get; set; }
-        public int TabIndex { get; set; }
+        public string TabId { get; set; }
         public string RestoreCommand { get; set; }
         public string Text { get; set; }
     }

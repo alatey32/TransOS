@@ -12,12 +12,7 @@ namespace TransOS.Core.Settings
     /// </summary>
     public class ObjectParam : ABaseParam
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="Os">TransOS context</param>
-        /// <param name="Service"></param>
-        internal ObjectParam(Context Os, SettingsService Service) : base(Os, Service)
+        internal ObjectParam(SettDirectory Directory) : base(Directory)
         {
         }
 
@@ -30,13 +25,56 @@ namespace TransOS.Core.Settings
         public T Get<T>(string Name)
             where T : class
         {
-            var Record = this.Os.MainDatabase.EntityContext.SettingsDirectoryParamObject.FirstOrDefault(x =>
-            x.DirectoryId == this.Service.CurrentDirectory.Id && x.Name == Name);
+            var Record = this.Directory.Os.MainDatabase.EntityContext.SettingsDirectoryParamObject.FirstOrDefault(x =>
+            x.DirectoryId == this.Directory.DirectoryRecord.Id && x.Name == Name);
             if (Record != null)
             {
                 if (!string.IsNullOrWhiteSpace(Record.Value))
                 {
                     var newObject = JsonConvert.DeserializeObject<T>(Record.Value);
+                                        
+                    var type = typeof(T);
+                    bool IdSetted = false;
+
+                    // находим поля
+                    // finding fields
+                    foreach (var field in type.GetFields())
+                    {
+                        if (field.FieldType == typeof(string))
+                        {
+                            if (BaseMethods.Existed<SettingIdAttribute>(field))
+                            {
+                                if (field.FieldType == typeof(string))
+                                {
+                                    field.SetValue(newObject, Name);
+                                    IdSetted = true;
+                                }
+                                break;
+                            }
+                        }
+                    }
+
+                    // находим свойства
+                    // finding properties
+                    if (!IdSetted)
+                    {
+                        foreach (var property in type.GetProperties())
+                        {
+                            if (property.PropertyType == typeof(string))
+                            {
+                                if (BaseMethods.Existed<SettingIdAttribute>(property))
+                                {
+                                    if (property.PropertyType == typeof(string))
+                                    {
+                                        property.SetValue(newObject, Name);
+                                        IdSetted = true;
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
                     return newObject;
                 }
             }
@@ -66,13 +104,13 @@ namespace TransOS.Core.Settings
                 // creating new
                 Record = new MainDatabase.Entity.SettingsDirectoryParamObject
                 {
-                    DirectoryId = this.Service.CurrentDirectory.Id,
+                    DirectoryId = this.Directory.DirectoryRecord.Id,
                     Name = Name,
                     Value = JsonConvert.SerializeObject(Value)
                 };
-                this.Os.MainDatabase.EntityContext.SettingsDirectoryParamObject.Add(Record);
+                this.Directory.Os.MainDatabase.EntityContext.SettingsDirectoryParamObject.Add(Record);
             }
-            this.Os.MainDatabase.EntityContext.SaveChanges();
+            this.Directory.Os.MainDatabase.EntityContext.SaveChanges();
         }
 
         /// <summary>
@@ -128,15 +166,15 @@ namespace TransOS.Core.Settings
         /// <returns>Parameter names</returns>
         public override IEnumerable<string> GetNames()
         {
-            return this.Os.MainDatabase.EntityContext.SettingsDirectoryParamObject
-                .Where(x => x.DirectoryId == this.Service.CurrentDirectory.Id)
+            return this.Directory.Os.MainDatabase.EntityContext.SettingsDirectoryParamObject
+                .Where(x => x.DirectoryId == this.Directory.DirectoryRecord.Id)
                 .Select(x => x.Name).ToArray();
         }
 
         private MainDatabase.Entity.SettingsDirectoryParamObject FindRecord(string Name)
         {
-            return this.Os.MainDatabase.EntityContext.SettingsDirectoryParamObject.FirstOrDefault(x =>
-                    x.DirectoryId == this.Service.CurrentDirectory.Id && x.Name == Name);
+            return this.Directory.Os.MainDatabase.EntityContext.SettingsDirectoryParamObject.FirstOrDefault(x =>
+                    x.DirectoryId == this.Directory.DirectoryRecord.Id && x.Name == Name);
         }
 
         /// <summary>
@@ -149,8 +187,8 @@ namespace TransOS.Core.Settings
             var Record = this.FindRecord(Name);
             if (Record != null)
             {
-                this.Os.MainDatabase.EntityContext.SettingsDirectoryParamObject.Remove(Record);
-                this.Os.MainDatabase.EntityContext.SaveChanges();
+                this.Directory.Os.MainDatabase.EntityContext.SettingsDirectoryParamObject.Remove(Record);
+                this.Directory.Os.MainDatabase.EntityContext.SaveChanges();
                 return true;
             }
             return false;

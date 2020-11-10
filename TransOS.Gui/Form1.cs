@@ -27,7 +27,7 @@ namespace TransOS.Gui
             // Restore saved tabs
             foreach(var Record in this.Engine.Os.Network.Web.Client.Cash.GetTabsRestoreContents())
             {
-                this.Engine.WebBrowser.OpenUrl(new Uri(Record.RestoreCommand), Record.Text);
+                var tab = this.Engine.WebBrowser.OpenUrl(new Uri(Record.RestoreCommand), Record.Text, Record.TabId);
             }
 
             if (this.Engine.Os.Gi.Gui.Windows.Tabs.All.Count() == 0)
@@ -58,6 +58,11 @@ namespace TransOS.Gui
         {
             var forma = new DevTools.Form_QueryToCodeQuery();
             forma.ShowDialog();
+        }
+
+        private void bookmarksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Engine.Ridge.OpenForm(this.Engine.Os.Bookmarks);
         }
     }
 }

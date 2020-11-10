@@ -37,7 +37,7 @@ namespace TransOS.Core.Settings
 
         public void Fix()
         {
-            var settingsService = this.GetService("TransOS.MainDatabase");
+            var settingsService = this.GetDbService("TransOS.MainDatabase");
 
             if (!settingsService.Int.Exists("Version"))
             {
@@ -47,37 +47,9 @@ namespace TransOS.Core.Settings
             }
         }
 
-        public SettingsService GetService(string PluginIdName)
+        public SettingsService GetDbService(string Path)
         {
-            var NameParts = PluginIdName.Split('.');
-
-            SettingsDirectory CurrentDirectory = null;
-            int? ParentId = null;
-            foreach (var namePart in NameParts)
-            {
-                ParentId = CurrentDirectory?.Id;
-                CurrentDirectory = this.Os.MainDatabase.EntityContext.SettingsDirectory.FirstOrDefault(x => x.Name == namePart && x.ParentId == ParentId);
-
-                if (CurrentDirectory == null)
-                {
-                    CurrentDirectory = new SettingsDirectory
-                    {
-                        Name = namePart,
-                        ParentId = ParentId
-                    };
-
-                    this.Os.MainDatabase.EntityContext.SettingsDirectory.Add(CurrentDirectory);
-                    this.Os.MainDatabase.EntityContext.SaveChanges();
-                }
-            }
-
-            return new SettingsService(this.Os, CurrentDirectory);
+            return new SettingsService(this.Os, SettingsServiceType.Database, Path);
         }
-
-        public SettingsService GetService(SettDirectory settDirectory)
-        {
-            return new SettingsService(this.Os, settDirectory.settingsDirectory);
-        }
-
     }
 }

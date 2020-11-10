@@ -13,7 +13,7 @@ namespace TransOS.Core.Gi.Gui.Windows.Tabs
     /// </summary>
     public class Tab : ITab
     {
-        public Guid guid { get; private set; }
+        public string Id { get; set; }
 
         internal readonly TabHeader Header_;
 
@@ -51,9 +51,7 @@ namespace TransOS.Core.Gi.Gui.Windows.Tabs
             set
             {
                 this.RestoreCommand_ = value;
-                int TabPageIndex = this.Os.Gi.Gui.Windows.Tabs.MainTabControl.TabPages.IndexOf(this.tabPage);
-                if (TabPageIndex >= 0)
-                    Os.Network.Web.Client.Cash.SaveTab(this, TabPageIndex);
+                Os.Network.Web.Client.Cash.SaveTab(this, this.Id);
             }
         }
 
@@ -77,7 +75,7 @@ namespace TransOS.Core.Gi.Gui.Windows.Tabs
         internal Tab(Context Os, string Text)
         {
             this.Os = Os;
-            this.guid = Guid.NewGuid();
+            this.Id = Os.Helper.GetRandomGuidString();
 
             this.tabPage = new TabPage(Text)
             {
@@ -93,10 +91,8 @@ namespace TransOS.Core.Gi.Gui.Windows.Tabs
         /// Close this tab
         /// </summary>
         public void Close()
-        {            
-            int TabPageIndex = this.Os.Gi.Gui.Windows.Tabs.MainTabControl.TabPages.IndexOf(this.tabPage);
-            if (TabPageIndex >= 0)
-                Os.Network.Web.Client.Cash.RemoveTab(TabPageIndex);
+        {
+            Os.Network.Web.Client.Cash.RemoveTab(this.Id);
 
             this.Closing?.Invoke(this);
             this.Os.Gi.Gui.Windows.Tabs.MainTabControl.TabPages.Remove(this.tabPage);

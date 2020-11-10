@@ -53,9 +53,9 @@ namespace TransOS.Core.Implement
         public Plugin.Autorun.IThis Autorun { get; }
         public Plugin.HotKeys.IThis HotKeys { get; }*/
         public Plugin.Gi.IThis Gi { get; }
-        /*public Plugin.Helper.IThis Helper { get; }
+        public Plugin.Helper.IThis Helper { get; }
         public Plugin.Application.IThis Application { get; }
-        public Plugin.ParentOs.IThis ParentOs { get; }
+        /*public Plugin.ParentOs.IThis ParentOs { get; }
         public Plugin.FileSystem.IThis FileSystem { get; }
         public Plugin.Converter.IThis Converter { get; }*/
 
@@ -82,9 +82,9 @@ namespace TransOS.Core.Implement
             this.Autorun = new Autorun.This(Os.Autorun);
             this.HotKeys = new HotKeys.This(this);*/
             this.Gi = new Gi.This(Os.Gi);
-            /*this.Helper = new Helper.This(Os.Helper);
+            this.Helper = new Helper.This(Os.Helper);
             this.Application = new Application.This(Os.Application);
-            this.ParentOs = new ParentOs.This(Os.ParentOs);
+            /*this.ParentOs = new ParentOs.This(Os.ParentOs);
             this.FileSystem = new FileSystem.This(Os.FileSystem);
             this.Converter = new Converter.This(Os.Converter);*/
         }

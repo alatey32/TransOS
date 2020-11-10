@@ -70,7 +70,26 @@ namespace TransOS.Plugin.Ridge
         /// <summary>
         /// Main text
         /// </summary>
-        string Text { get; }
+        string Text { get; set; }
+
+        /// <summary>
+        /// Can user manualy edit text
+        /// </summary>
+        bool CanEditText { get; }
+
+        event Action<string> TextEdited;
+
+        void BeginUserEdit();
+
+        event Action<IRidgeObject> BeginedUserEdit;
+
+        void BeginUserRemove();
+
+        event Action<IRidgeObject> BeginedUserRemove;
+
+        bool Remove();
+
+        event Action<IRidgeObject> Removed;
 
         #endregion
 
@@ -102,24 +121,6 @@ namespace TransOS.Plugin.Ridge
         RidgeList RightMenu { get; }
 
         #endregion
-
-        /*
-        #region State
-
-        /// <summary>
-        /// Живой ли объект
-        /// </summary>
-        bool Live { get; }
-
-        /// <summary>
-        /// Задать живость объекта
-        /// </summary>
-        /// <param name="Live">Удалось ли изменить состояние?</param>
-        /// <returns></returns>
-        bool SetLive(bool Live);
-
-        #endregion
-        */
 
         #region Exec
 

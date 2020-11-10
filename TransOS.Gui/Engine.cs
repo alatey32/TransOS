@@ -19,6 +19,7 @@ namespace TransOS.Gui
         public readonly Core.Context Os;
 
         public readonly TransOS.Plugin.WebBrowser.Context WebBrowser;
+        public readonly TransOS.Plugin.Ridge.Context Ridge;
 
         public readonly Form1 Mainform;
 
@@ -30,6 +31,9 @@ namespace TransOS.Gui
 
             var OsForPlugin = new TransOS.Core.Implement.Context(this.Os);
             this.WebBrowser = new Plugin.WebBrowser.Context(OsForPlugin);
+
+            OsForPlugin = new TransOS.Core.Implement.Context(this.Os);
+            this.Ridge = new Plugin.Ridge.Context(OsForPlugin);
         }
     }
 }

@@ -148,6 +148,10 @@
       <Project>{2be21383-6bb9-4b1f-9ad8-3050f4c6f23b}</Project>
       <Name>TransOS.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TransOS.Plugin.Ridge\TransOS.Plugin.Ridge.csproj">
+      <Project>{157f635f-57d6-465f-97ad-8058d897a949}</Project>
+      <Name>TransOS.Plugin.Ridge</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TransOS.Plugin.WebBrowser\TransOS.Plugin.WebBrowser.csproj">
       <Project>{1651e5a3-9517-4ff3-9b29-c547bf4ac364}</Project>
       <Name>TransOS.Plugin.WebBrowser</Name>

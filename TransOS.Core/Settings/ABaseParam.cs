@@ -13,21 +13,11 @@ namespace TransOS.Core.Settings
     /// </summary>
     public abstract class ABaseParam : IBaseParam
     {
-        /// <summary>
-        /// TransOS context
-        /// </summary>
-        protected readonly Context Os;
-        protected readonly SettingsService Service;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="Os">TransOS context</param>
-        /// <param name="Service"></param>
-        internal ABaseParam(Context Os, SettingsService Service)
+        protected readonly SettDirectory Directory;
+                
+        internal ABaseParam(SettDirectory Directory)
         {
-            this.Os = Os;
-            this.Service = Service;
+            this.Directory = Directory;
         }
 
         /// <summary>

@@ -4,52 +4,50 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TransOS.Core.MainDatabase.Entity;
+using TransOS.Plugin.Settings;
 
 namespace TransOS.Core.Settings
 {
     /// <summary>
     /// Settings service
     /// </summary>
-    public class SettingsService
+    public class SettingsService : SettDirectory
     {
-        /// <summary>
-        /// Access to string values
-        /// </summary>
-        public StringParam String { get; }
-
-        /// <summary>
-        /// Access to string list values
-        /// </summary>
-        public StringsParam Strings { get; }
-
-        /// <summary>
-        /// Access to Int values
-        /// </summary>
-        public IntParam Int { get; }
-
-        /// <summary>
-        /// Access to serialyzed object values
-        /// </summary>
-        public ObjectParam Object { get; }
-
-        /// <summary>
-        /// Settings directory DB record
-        /// </summary>
-        internal readonly SettingsDirectory CurrentDirectory = null;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="Os">TransOS context</param>
-        /// <param name="CurrentDirectory">Settings directory DB record</param>
-        internal SettingsService(Context Os, SettingsDirectory CurrentDirectory)
+        internal SettingsService(Context Os, SettingsServiceType type, string Path) : base(Os)
         {
-            this.CurrentDirectory = CurrentDirectory;
+            switch(type)
+            {
+                case SettingsServiceType.Database:
+                    var NameParts = Path.Split('.');
 
-            this.String = new StringParam(Os, this);
-            this.Strings = new StringsParam(Os, this);
-            this.Int = new IntParam(Os, this);
-            this.Object = new ObjectParam(Os, this);
+                    int? ParentId = null;
+                    SettingsDirectory CurrentDirectory = null;
+                    foreach (var namePart in NameParts)
+                    {
+                        ParentId = CurrentDirectory?.Id;
+                        CurrentDirectory = this.Os.MainDatabase.EntityContext.SettingsDirectory.FirstOrDefault(x => x.Name == namePart && x.ParentId == ParentId);
+
+                        if (CurrentDirectory == null)
+                        {
+                            CurrentDirectory = new SettingsDirectory
+                            {
+                                Name = namePart,
+                                ParentId = ParentId
+                            };
+
+                            this.Os.MainDatabase.EntityContext.SettingsDirectory.Add(CurrentDirectory);
+                            this.Os.MainDatabase.EntityContext.SaveChanges();
+                        }
+                    }
+
+                    this.Init(CurrentDirectory);
+                    break;
+            }
         }
     }
 }

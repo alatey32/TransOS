@@ -71,10 +71,66 @@ namespace TransOS.Plugin.Ridge
         /// </summary>
         public Image Icon { get; protected set; }
 
+        protected string Text_ = null;
+
         /// <summary>
         /// Main text
         /// </summary>
-        public string Text { get; protected set; }
+        public virtual string Text
+        {
+            get => this.Text_;
+            set
+            {
+                bool CanSet = false;
+                if (string.IsNullOrWhiteSpace(this.Text_))
+                    CanSet = true;
+                else if (CanEditText)
+                    CanSet = true;
+
+                if (CanSet)
+                {
+                    this.Text_ = value;
+                    this.TextEdited?.Invoke(this.Text_);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Can user manualy edit text
+        /// </summary>
+        public bool CanEditText { get; protected set; } = false;
+
+        public event Action<string> TextEdited;
+
+        public void BeginUserEdit()
+        {
+            if (CanEditText)
+                this.BeginedUserEdit?.Invoke(this);
+        }
+
+        public event Action<IRidgeObject> BeginedUserEdit;
+
+        public void BeginUserRemove()
+        {
+            if (CanEditText)
+                this.BeginedUserRemove?.Invoke(this);
+        }
+
+        public event Action<IRidgeObject> BeginedUserRemove;
+
+        public bool Remove()
+        {
+            if(this.Parent != null)
+            {
+                var r = this.Parent.Child.Remove(this);
+                if (r)
+                    this.Removed?.Invoke(this);
+                return r;
+            }
+            return false;
+        }
+
+        public event Action<IRidgeObject> Removed;
 
         #endregion
 

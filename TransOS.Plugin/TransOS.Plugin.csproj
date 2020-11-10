@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\AppActionType.cs" />
+    <Compile Include="Application\AppRegistration.cs" />
+    <Compile Include="Application\IThis.cs" />
     <Compile Include="Gi\Gui\IThis.cs" />
     <Compile Include="Gi\Gui\Windows\IThis.cs" />
     <Compile Include="Gi\Gui\Windows\Tabs\ITab.cs" />
@@ -84,10 +87,11 @@
     <Compile Include="Helper\InformationTable\View\ФормаТаблицы.Designer.cs">
       <DependentUpon>ФормаТаблицы.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helper\InformationTable\БазовыйЭлемент.cs" />
+    <Compile Include="Helper\InformationTable\BaseElement.cs" />
     <Compile Include="Helper\InformationTable\Помощник.cs" />
     <Compile Include="Helper\InformationTable\Таблица.cs" />
     <Compile Include="Helper\InformationTable\ЦветностьЭлемента.cs" />
+    <Compile Include="Helper\IThis.cs" />
     <Compile Include="Helper\TypeConverters\TcBoolean\БазовыйКонвертр.cs" />
     <Compile Include="Helper\TypeConverters\TcBoolean\ДаНет.cs" />
     <Compile Include="Helper\TypeConverters\TcBoolean\ЕстьНет.cs" />
@@ -124,6 +128,7 @@
     <Compile Include="Settings\IStringsParam.cs" />
     <Compile Include="Settings\IThis.cs" />
     <Compile Include="Settings\SettingIdAttribute.cs" />
+    <Compile Include="Settings\SettingsServiceType.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Helper\InformationTable\View\ФормаТаблицы.resx">

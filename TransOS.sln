@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransOS.Plugin", "TransOS.P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransOS.Plugin.WebBrowser", "TransOS.Plugin.WebBrowser\TransOS.Plugin.WebBrowser.csproj", "{1651E5A3-9517-4FF3-9B29-C547BF4AC364}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransOS.Plugin.Ridge", "TransOS.Plugin.Ridge\TransOS.Plugin.Ridge.csproj", "{157F635F-57D6-465F-97AD-8058D897A949}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{1651E5A3-9517-4FF3-9B29-C547BF4AC364}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1651E5A3-9517-4FF3-9B29-C547BF4AC364}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1651E5A3-9517-4FF3-9B29-C547BF4AC364}.Release|Any CPU.Build.0 = Release|Any CPU
+		{157F635F-57D6-465F-97AD-8058D897A949}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{157F635F-57D6-465F-97AD-8058D897A949}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{157F635F-57D6-465F-97AD-8058D897A949}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{157F635F-57D6-465F-97AD-8058D897A949}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

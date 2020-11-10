@@ -13,8 +13,8 @@ namespace TransOS.Plugin.Helper.InformationTable
     /// <summary>
     /// Все типы элементов информационной таблицы должны наследовать этот класс
     /// </summary>
-    public abstract class БазовыйЭлемент<ТипЗаписи> : ЯКопирабельный<ТипЗаписи>
-        where ТипЗаписи : БазовыйЭлемент<ТипЗаписи>
+    public abstract class BaseElement<ТипЗаписи> : ЯКопирабельный<ТипЗаписи>
+        where ТипЗаписи : BaseElement<ТипЗаписи>
     {
         public readonly ЦветностьЭлемента Цветность;
         public readonly string Группа;
@@ -47,7 +47,7 @@ namespace TransOS.Plugin.Helper.InformationTable
 
         private Таблица<ТипЗаписи> ИнфТаблица_;
 
-        public БазовыйЭлемент(
+        public BaseElement(
             ЦветностьЭлемента Цветность = ЦветностьЭлемента.Нет,
             string Группа = null)
         {

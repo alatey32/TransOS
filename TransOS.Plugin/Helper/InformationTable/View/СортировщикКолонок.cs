@@ -14,7 +14,7 @@ namespace TransOS.Plugin.Helper.InformationTable.View
     /// Сортировка по колонкам в ListView
     /// </summary>
     internal class СортировщикКолонок<ТипЭлемента> : IComparer
-        where ТипЭлемента : БазовыйЭлемент<ТипЭлемента>
+        where ТипЭлемента : BaseElement<ТипЭлемента>
     {
         /// <summary>
         /// Specifies the column to be sorted

@@ -14,7 +14,7 @@ using TransOS.Plugin.Helper.InformationTable.Interface;
 namespace TransOS.Plugin.Helper.InformationTable.View
 {
     public partial class ФормаТаблицы<ТипЗаписи> : Form
-        where ТипЗаписи : БазовыйЭлемент<ТипЗаписи>
+        where ТипЗаписи : BaseElement<ТипЗаписи>
     {
         static string ПолучитьНазваниеКолонки(PropertyInfo Свойство)
         {

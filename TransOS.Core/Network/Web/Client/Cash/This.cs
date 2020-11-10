@@ -21,10 +21,10 @@ namespace TransOS.Core.Network.Web.Client.Cash
 
         #region SavedTabs
 
-        public bool RemoveTab(int TabIndex)
+        public bool RemoveTab(string TabId)
         {
-            var Record = this.Os.MainDatabase.EntityContext.SavedTabs.FirstOrDefault(x => x.TabIndex == TabIndex);
-            if (Record == null)
+            var Record = this.Os.MainDatabase.EntityContext.SavedTabs.FirstOrDefault(x => x.TabId == TabId);
+            if (Record != null)
             {
                 this.Os.MainDatabase.EntityContext.SavedTabs.Remove(Record);
 
@@ -34,16 +34,16 @@ namespace TransOS.Core.Network.Web.Client.Cash
             return false;
         }
 
-        public bool SaveTab(ITab tab, int TabIndex)
+        public bool SaveTab(ITab tab, string TabId)
         {
             if (!string.IsNullOrWhiteSpace(tab.RestoreCommand))
             {
-                var Record = this.Os.MainDatabase.EntityContext.SavedTabs.FirstOrDefault(x => x.TabIndex == TabIndex);
+                var Record = this.Os.MainDatabase.EntityContext.SavedTabs.FirstOrDefault(x => x.TabId == TabId);
                 if (Record == null)
                 {
                     Record = new MainDatabase.Entity.SavedTabs
                     {
-                        TabIndex = TabIndex,
+                        TabId = TabId,
                         RestoreCommand = tab.RestoreCommand,
                         Text = tab.Header.Text
                     };
@@ -63,7 +63,7 @@ namespace TransOS.Core.Network.Web.Client.Cash
 
         public IEnumerable<MainDatabase.Entity.SavedTabs> GetTabsRestoreContents()
         {
-            return this.Os.MainDatabase.EntityContext.SavedTabs.OrderBy(x => x.TabIndex);
+            return this.Os.MainDatabase.EntityContext.SavedTabs;
         }
 
         #endregion
